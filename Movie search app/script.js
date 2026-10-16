@@ -1,7 +1,7 @@
 // CineGlow now uses TMDB instead of OMDb.
 // Paste your TMDB API Read Access Token between the quotes below.
 // Do not publish a real token in a public repository or shared source file.
-const TMDB_READ_ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NjJjMWMyMDEyNGUxOWFhNjNlOGRlZjVjMWViY2ZkOSIsIm5iZiI6MTc5MjA4MjEwOS45ODcsInN1YiI6IjZhZDEwMGJkNTRjNzBhYTQ5YThlZmQ2MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.euwl31acJilZgdhJP3k-CTdJDE02g_Bh1bQZXqadb34";
+
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 const TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
 
