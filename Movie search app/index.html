@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123B3A">
+  <title>CineGlow | Find Your Next Movie</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a href="#" class="brand" id="home-link" aria-label="CineGlow home">
+      <span class="brand-icon">▶</span> CineGlow
+    </a>
+    <button id="global-back" class="global-back" type="button" hidden aria-label="Go back to previous screen">← Back</button>
+    <nav class="main-nav" aria-label="Main navigation">
+      <button class="nav-button" data-page="discover">Discover</button>
+      <button class="nav-button active" data-page="mood">Mood Match</button>
+      <button class="nav-button" data-page="group">Group Match</button>
+      <button class="nav-button" data-page="watchlist">My Watchlist <span id="watchlist-count" class="watchlist-count">0</span></button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="welcome-section" data-page-section="mood">
+      <div class="hero">
+        <span class="eyebrow">YOUR PERSONAL MOVIE GUIDE</span>
+        <h1>Every mood has<br> <span>a movie.</span></h1>
+        <p>Tell us how you feel. We'll help you find your next favourite.</p>
+      </div>
+
+      <section class="panel">
+        <h2>How are you feeling today?</h2>
+        <p class="muted">Choose the mood that describes you best.</p>
+
+        <div class="mood-grid" id="mood-grid">
+          <button class="mood-card" data-mood="Happy">
+            <span>😊</span><strong>Happy</strong>
+            <small>Something uplifting</small>
+          </button>
+          <button class="mood-card" data-mood="Sad">
+            <span>🌧️</span><strong>Sad</strong>
+            <small>A little comfort</small>
+          </button>
+          <button class="mood-card" data-mood="Relaxed">
+            <span>🍃</span><strong>Relaxed</strong>
+            <small>Easy viewing</small>
+          </button>
+          <button class="mood-card" data-mood="Excited">
+            <span>⚡</span><strong>Excited</strong>
+            <small>Something thrilling</small>
+          </button>
+          <button class="mood-card" data-mood="Curious">
+            <span>🔎</span><strong>Curious</strong>
+            <small>Solve a mystery</small>
+          </button>
+          <button class="mood-card" data-mood="Romantic">
+            <span>❤️</span><strong>Romantic</strong>
+            <small>A love story</small>
+          </button>
+        </div>
+
+        <div class="preference">
+          <label for="genre-select">What would you like to watch?</label>
+          <select id="genre-select">
+            <option value="Any">Surprise me with any genre</option>
+            <option value="10751">Family</option>
+            <option value="35">Comedy</option>
+            <option value="10749">Romance</option>
+            <option value="53">Thriller</option>
+            <option value="80">Crime</option>
+            <option value="9648">Mystery</option>
+            <option value="12">Adventure</option>
+            <option value="16">Animation</option>
+            <option value="18">Drama</option>
+            <option value="28">Action</option>
+          </select>
+          <label for="language-select">Movie language</label>
+          <select id="language-select">
+            <option value="en">English</option>
+            <option value="kn">Kannada</option>
+            <option value="hi">Hindi</option>
+            <option value="ta">Tamil</option>
+            <option value="te">Telugu</option>
+            <option value="ml">Malayalam</option>
+            <option value="ja">Japanese</option>
+            <option value="ko">Korean</option>
+            <option value="fr">French</option>
+            <option value="es">Spanish</option>
+            <option value="de">German</option>
+            <option value="it">Italian</option>
+            <option value="any">Any language</option>
+          </select>
+        </div>
+
+        <button id="recommend-button" class="primary-button">
+          Find My Movies →
+        </button>
+        <p id="mood-message" class="status" aria-live="polite"></p>
+      </section>
+    </section>
+
+    <section id="search-section" class="panel" data-page-section="discover" hidden>
+      <span class="eyebrow">KNOW WHAT YOU WANT?</span>
+      <h1>Find your movie.</h1>
+      <p class="muted">Search by title and explore the details.</p>
+
+      <form id="search-form" class="search-form">
+        <input id="movie-input" type="search"
+          placeholder="Try Inception, Interstellar..."
+          aria-label="Movie title" required>
+        <button class="primary-button" id="search-button" type="submit">
+          Search →
+        </button>
+      </form>
+      <button id="back-to-mood" class="text-button">
+        ← Back to mood discovery
+      </button>
+    </section>
+
+    <section id="group-section" class="panel" data-page-section="group" hidden>
+      <button class="text-button section-back" data-back type="button">← Back</button>
+      <span class="eyebrow">NO MORE GROUP CHAT DEBATES</span>
+      <h1>One movie. <span>Everyone's vibe.</span></h1>
+      <p class="muted">Choose a mood for each person. CineGlow will look for movies that fit the group's tastes.</p>
+      <div class="group-controls">
+        <label for="people-count">How many people are choosing?</label>
+        <select id="people-count">
+          <option value="2">2 people</option><option value="3">3 people</option>
+          <option value="4">4 people</option><option value="5">5 people</option>
+        </select>
+      </div>
+      <div id="people-moods" class="people-moods"></div>
+      <div class="group-controls">
+        <label for="group-language">Preferred original language</label>
+        <select id="group-language">
+          <option value="any">Any language</option><option value="en">English</option><option value="kn">Kannada</option>
+          <option value="hi">Hindi</option><option value="ta">Tamil</option><option value="te">Telugu</option>
+          <option value="ml">Malayalam</option><option value="ja">Japanese</option><option value="ko">Korean</option>
+        </select>
+      </div>
+      <button id="group-match-button" class="primary-button">Find our group match →</button>
+      <p id="group-message" class="status" aria-live="polite"></p>
+    </section>
+
+    <section id="watchlist-section" data-page-section="watchlist" hidden>
+      <button class="text-button section-back" data-back type="button">← Back</button>
+      <div class="results-heading">
+        <div><span class="eyebrow">YOUR PERSONAL COLLECTION</span><h1>My Watchlist</h1><p class="muted">Movies you want to save for later, on this browser.</p></div>
+      </div>
+      <p id="watchlist-message" class="status" aria-live="polite"></p>
+      <div id="watchlist-results" class="movie-grid"></div>
+    </section>
+
+    <section id="results-section" data-page-section="results" hidden>
+      <div class="results-heading">
+        <div>
+          <span class="eyebrow">YOUR MOVIE COLLECTION</span>
+          <h2 id="results-title">Recommended for you</h2>
+        </div>
+        <div class="results-actions">
+          <button id="back-from-results" class="text-button">← Back</button>
+          <button id="change-mood" class="text-button">Change mood</button>
+        </div>
+      </div>
+      <p id="results-message" class="status" aria-live="polite"></p>
+      <div id="movie-results" class="movie-grid"></div>
+    </section>
+
+    <section id="detail-section" class="panel detail-panel" data-page-section="details" hidden>
+      <button id="back-to-results" class="text-button">← Back to results</button>
+      <div id="movie-detail"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>CineGlow · Find the right movie for your moment.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
